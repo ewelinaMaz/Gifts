@@ -1,4 +1,20 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+ .root {
+     .AppBar {
+         background: $base-color;
+     }
+     .login {
+         text-decoration: none;
+         color: $text-color-light;
+         font-family: $text-font;
+     }
+     .brand {
+         font-family: $logo-font;
+         width: 65%;
+     }
+     .menuButton {
+        margin-right: 1rem;
+     }
+     
+ }

@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './MainLayout.module.scss';
 
 import clsx from 'clsx';
 import { Header } from '../Header/Header';
+import Divider from '@material-ui/core/Divider';
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
-
+import styles from './MainLayout.module.scss';
 
 
 const Component = ({className, children}) => (
   <div className={clsx(className, styles.root)}>
     <Header/>
+    <Divider variant="middle" />
     {children}
   </div>
 );

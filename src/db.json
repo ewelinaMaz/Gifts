@@ -1,0 +1,112 @@
+[
+    {
+        "_id": 1,
+        "name": "candies jar",
+        "option": "Jar with macaron",
+        "image": "https://i.postimg.cc/fTvpdGnf/macaron-jar.jpg",
+        "description": "Macarons are a butter-creamed filled cookie sandwich that  transport you to a cobbled street in Paris with one taste. They are magical, dainty, chic, stylish and delicious in equal measure.",
+        "price": 25,
+        "rate": 4,
+        "category": "mood",
+        "productSelect": "Select favourite flavour"
+      },
+      {
+        "_id": 2,
+        "name": "candies jar",
+        "option": "Jar with caramels",
+        "image": "https://i.postimg.cc/T1fQYPwM/caramels-jar.jpg",
+        "description": "SOFT, CREAMY, BUTTERY TEXTURE – Individually wrapped high quality caramel means a soft bite that doesn’t stick to your teeth.",
+        "price": 25,
+        "rate": 4,
+        "category": "mood",
+        "productSelect": "Select favourite flavour"
+      },
+      {
+        "_id": 3,
+        "name": "candies jar",
+        "option": "Jar with chocolates",
+        "image": "https://i.postimg.cc/K8k7bTN3/chocolates-jar.jpg",
+        "description": "The dark mouth melting chocolate with crackling hazelnuts under your teeth. leaves you with a irresistible taste of heaven smells sweeter then honey , tempting you to eat more and more!",
+        "price": 25,
+        "rate": 4,
+        "category": "mood",
+        "productSelect": "Select favourite flavour"
+      },
+      {
+        "_id": 4,
+        "name": "A unique story gift to inspire your loved ones",
+        "option": "Inspire",
+        "image": "https://i.postimg.cc/PqNZsvdv/388226-PC4-CEW-583.jpg",
+        "description": "Vulputate suspendisse arcu accumsan eu adipiscing quam vehicula dictumst a cras leo in cursus platea scelerisque nisi inceptos nam. Interdum a a nec ut scelerisque suspendisse cras aenean mollis a integer porta a a nisl.",
+        "price": 25,
+        "rate": 4,
+        "category": "soul",
+        "productSelect": "Select story title"
+      },
+      {
+        "_id": 5,
+        "name": "Stories for those who do not care about our planet",
+        "option": "Planet Care",
+        "image": "https://i.postimg.cc/5NzRJDKm/planet.jpg",
+        "description": "Conubia condimentum sociis gravida rutrum platea odio non commodo integer vestibulum maecenas condimentum ultricies a a. Aliquet rutrum a est consequat arcu a nostra a tortor a nibh nibh a laoreet facilisi.",
+        "price": 25,
+        "rate": 4,
+        "category": "soul",
+        "productSelect": "Select story title"
+      },
+      {
+        "_id": 6,
+        "name": "Stories about love and wisdom",
+        "option": "Value of life",
+        "image": "https://i.postimg.cc/X79QmdXH/life.jpg",
+        "description": "Ullamcorper suscipit porttitor condimentum cursus risus taciti curae suspendisse ad nullam parturient habitasse gravida vestibulum turpis dis est. Tristique sapien ipsum congue dictumst ante ac taci.",
+        "price": 25,
+        "rate": 4,
+        "category": "soul",
+        "productSelect": "Select story title"
+      },
+      {
+        "_id": 7,
+        "name": "Magic stories with dedication",
+        "option": "For young readers",
+        "image": "https://i.postimg.cc/rmSpj2rh/2135.jpg",
+        "description": "A leo malesuada aenean porta pretium iaculis dui quisque consectetur ipsum vestibulum vestibulum nisl nunc tincidunt.",
+        "price": 25,
+        "rate": 4,
+        "category": "soul",
+        "productSelect": "Select story title"
+      },
+      {
+        "_id": 8,
+        "name": "SPA",
+        "option": "Natural soap",
+        "image": "https://i.postimg.cc/kXxLKB3S/3728.jpg",
+        "description": "A cras suspendisse est a potenti sagittis lobortis parturient porta est erat nec facilisis integer inceptos torquent hendrerit.",
+        "price": 25,
+        "rate": 4,
+        "category": "body",
+        "productSelect": "Select fragrance"
+      },
+      {
+        "_id": 9,
+        "name": "SPA",
+        "option": "Natural oils and creams",
+        "image": "https://i.postimg.cc/5thRXC9D/spa.jpg",
+        "description": "A a a conubia auctor ante mauris hac ullamcorper potenti sed fames commodo condimentum orci sit magna urna feugiat vestibulum in pharetra nibh parturient.",
+        "price": 25,
+        "rate": 4,
+        "category": "body",
+        "productSelect": "Select fragrance"
+      },
+      {
+        "_id": 10,
+        "name": "SPA",
+        "option": "Body scrub",
+        "image": "https://i.postimg.cc/8PWk80n6/8858.jpg",
+        "description": "Rutrum at consectetur ullamcorper vestibulum consectetur vivamus adipiscing tincidunt eu lacus a dis suspendisse tristique habitant fermentum metus ultricies magnis enim curae nascetur.",
+        "price": 25,
+        "rate": 4,
+        "category": "body",
+        "productSelect": "Select fragrance"
+    }
+]

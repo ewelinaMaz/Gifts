@@ -37,9 +37,9 @@ app.use('*', (req, res) => {
 });
 
 /* MONGOOSE */
-process.env.NODE_ENV === 'production' ?
-  mongoose.connect('mongodb+srv://Lina:Lina@cluster0.8wih4.mongodb.net/luxury-gifts?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }) :
-  mongoose.connect('mongodb://localhost:27017/luxury-gifts', { useNewUrlParser: true, useUnifiedTopology: true });
+
+mongoose.connect('mongodb+srv://Lina:Lina@cluster0.8wih4.mongodb.net/luxury-gifts?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+ 
 const db = mongoose.connection;
 
 db.once('open', () => {

@@ -11,82 +11,107 @@ import clsx from 'clsx';
 import { NumberInput } from '../../common/NumberInput/NumberInput';
 import { Select } from '../../features/Select/Select';
 import { connect } from 'react-redux';
-import { getGiftByOption } from '../../../redux/giftsRedux';
-import { getOptionsByProducts } from '../../../redux/optionRedux';
+import { getGiftByOption, fetchPublished } from '../../../redux/giftsRedux';
+import { getOptionsByProducts, loadOptionsRequest } from '../../../redux/optionRedux';
 import { addToCart } from '../../../redux/cartRedux';
 import styles from './Gift.module.scss';
 
-const Component = ({ gift, options, className}) => { 
-  const [value, setValue] = React.useState('female');
-  const [amount, setAmount] = React.useState(1);
+class Component extends React.Component  { 
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+state= {
+  value: '',
+  amount: 1,
+}
+ static propTypes = {
+   className: PropTypes.string,
+   gift: PropTypes.object,
+   options: PropTypes.array,
+   match: PropTypes.shape({
+     params: PropTypes.shape({
+       id: PropTypes.string,
+     }),
+   }),
+   addGift: PropTypes.func,
+   addToCart: PropTypes.func,
+   loadProducts: PropTypes.func,
+   loadOptionsRequest: PropTypes.func,
+ };
+
+ componentDidMount() {
+   this.props.loadProducts();
+   this.props.loadOptionsRequest();
+ }
+
+  handleChange = (event) => {
+    this.setState({value: event.target.value});
   };
 
-  const updateTextField = (event) => {
-    setAmount(parseInt(event.target.value));
+  updateTextField = (event) => {
+    this.setState({amount: parseInt(event.target.value)});
   };
 
-  return (
-    <Container className={clsx(className, styles.root)}>
-      <Grid
-        container
-        direction="row"
-        justify="space-evenly"
-        alignItems="center">
-        <Grid item xs={12} sm={6}>
-          <Typography component="p">Price {gift.price}$</Typography>
-          <Typography component="h1">{gift.option}</Typography>
-          <Typography component="p"> {gift.description}</Typography>
-          <FormControl component="fieldset"
-            className={styles.select}>
-            <FormLabel component="legend">{gift.productSelect}</FormLabel>
-            <RadioGroup aria-label={gift.productSelect} 
-              name="select"
-              value={value} 
-              onChange={handleChange}>
-              {options.map( option => (
-                <FormControlLabel 
-                  key={option.option} 
-                  value={option.option} 
-                  control=
-                    {<Radio 
-                      className={styles.radio}
-                      style= {{color: '#584332'}} />} 
-                  label={option.option} />
-              ))}
-            </RadioGroup>
-          </FormControl>
-          <span>Ilość:&nbsp;
-            <NumberInput
-              value={amount}
-              onChange={updateTextField}
-            />
-          </span>
-          <Button 
-            className={styles.button}
-            variant="contained"
-            onClick={() => addToCart(gift, amount)}>Add to Card</Button>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Select options={options}/>
-        </Grid>
-      </Grid>
-    </Container>
-  );
-};
+  addGiftToCart = (amount, value) => this.props.addGift({
+    gift: this.props.gift,
+    amount: amount,
+    value: value });
 
-Component.propTypes = {
-  className: PropTypes.string,
-  gift: PropTypes.object,
-  options: PropTypes.array,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string,
-    }),
-  }),
-};
+  render() {
+    const { gift, options, className} = this.props;
+    const { amount, value } = this.state;
+
+    return (
+      <Container className={clsx(className, styles.root)}>
+        <Grid
+          container
+          direction="row"
+          justify="space-evenly"
+          alignItems="center">
+          <Grid item xs={12} sm={6}>
+            <Typography component="p">Price {gift.price}$</Typography>
+            <Typography component="h1">{gift.option}</Typography>
+            <Typography component="p"> {gift.description}</Typography>
+            <FormControl component="fieldset"
+              className={styles.select}>
+              <FormLabel component="legend">{gift.productSelect}</FormLabel>
+              <RadioGroup aria-label={gift.productSelect} 
+                name="select"
+                value={value} 
+                onChange={this.handleChange}>
+                {options.map( option => (
+                  <FormControlLabel 
+                    key={option.option} 
+                    value={option.option} 
+                    control=
+                      {<Radio 
+                        className={styles.radio}
+                        style= {{color: '#584332'}} />} 
+                    label={option.option} />
+                ))}
+              </RadioGroup>
+            </FormControl>
+            <span>Ilość:&nbsp;
+              <NumberInput
+                value={amount}
+                onChange={this.updateTextField}
+              />
+            </span>
+            <Button 
+              className={styles.button}
+              variant="contained"
+              onClick={() => this.addGiftToCart( amount, value )}>
+                Add to Card
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Select options={options}/>
+          </Grid>
+        </Grid>
+      </Container>
+    );
+  }
+}
+
+
 
 const mapStateToProps = (state, props) => ({
   gift: getGiftByOption(state,  props.match.params.id),
@@ -94,7 +119,9 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addToCart: (gift, amount) => dispatch(addToCart(gift, amount)),
+  addGift: (arg) => dispatch(addToCart(arg)),
+  loadProducts: () => dispatch(fetchPublished()),
+  loadOptionsRequest: () => dispatch(loadOptionsRequest()),
 });
 
 const ContainerComponent = connect(mapStateToProps, mapDispatchToProps)(Component);

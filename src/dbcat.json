@@ -1,0 +1,17 @@
+[
+    {
+        "id": "soul",
+        "name": "For Mind & Soul",
+        "image": "https://cdn.pixabay.com/photo/2015/07/27/20/16/book-863418_1280.jpg"
+     },
+    { 
+        "id": "mood", 
+        "name": "Good for Mood", 
+        "image": "https://i.postimg.cc/pTW1C9zX/for-mood2.jpg" 
+    },
+    { 
+        "id": "body", 
+        "name": "For Body", 
+        "image": "https://i.postimg.cc/K8765hwf/for-body.jpg" 
+    }
+  ]

@@ -34,6 +34,7 @@
         background-color: $base-color;
         height: 50px;
         color: $text-color-light;
+        margin-bottom: 10px;
         &:hover {
             background-color: lighten($color: $base-color, $amount: 5%);
         }

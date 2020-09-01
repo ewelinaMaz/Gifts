@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 
-const postSchema = new mongoose.Schema({
-  author: { type: String, required: true },
-  created: { type: Date, required: true },
-  updated: { type: Date, required: true },
-  status: { type: String, required: true },
-  title: { type: String, required: true },
-  text: { type: String, required: true },
-  photo: { type: String },
-  price: { type: Number },
-  phone: { type: String },
-  location: { type: String },
+const giftsSchema = new mongoose.Schema({
+  _id: { type: mongoose.Schema.Types.ObjectId, required: true },
+  name: { type: String, required: true },
+  option: { type: String, required: true, ref: 'Option' },
+  image: { type: String, required: true },
+  description: { type: String, required: true },
+  price: { type: Number, required: true },
+  rate: { type: Number },
+  category: { type: String, required: true },
+  categoryName: { type: String },
+  productSelect: { type: String },
 });
 
-module.exports = mongoose.model('Post', postSchema);
+module.exports = mongoose.model('Gift', giftsSchema);

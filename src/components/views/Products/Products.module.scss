@@ -5,6 +5,7 @@
   h2 {
     font-family: $logo-font;
     font-size: 36px;
+    text-decoration: none;
   }
 
   .divider {
@@ -37,8 +38,8 @@
     }
 
     .Content {
-        width: 35%;
-        text-align: center;
+      width: 35%;
+      text-align: center;
     }
 
     h3 {
@@ -54,9 +55,9 @@
       width: 65%;
     }
 
-    .button{
-        opacity: 0;
-        transition: 1s all;
+    .button {
+      opacity: 0;
+      transition: 1s all;
     }
 
     p {
@@ -67,12 +68,12 @@
       font-family: $text-font;
     }
     .description {
-        text-overflow: ellipsis;
-        overflow: auto;
-        max-height: 48%;
+      text-overflow: ellipsis;
+      overflow: auto;
+      max-height: 48%;
     }
     &:hover .button {
-        opacity: 1;
+      opacity: 1;
     }
   }
 
@@ -80,5 +81,21 @@
   a:hover {
     font-weight: 600;
     text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .Card {
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0;
+      justify-content: center;
+      width: 85vw;
+      .Content {
+        width: 100%;
+      }
+      .BoardImg {
+        width: 100%;
+      }
+    }
   }
 }

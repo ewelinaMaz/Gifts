@@ -7,29 +7,29 @@ import { Grid } from '@material-ui/core';
 //import { connect } from 'react-redux';
 //import { getCategories } from '../../../redux/categoriesRedux';
 
-const Component = ({className, categories}) => (
+const Component = ({className, gifts}) => (
   <div className={clsx(className, styles.root)}>
     <Grid
       container 
       direction="row"
       justify="space-between"
       alignItems="center">
-      <NavLink exact to={`/products/${categories[1].id}`} className={styles.firstLink}>
-        <Grid item xs={12} sm={12} className={styles.Box}>
-          <img src={categories[1].image} alt={categories[1].id} className={styles.imageButton}/>
-          <p className={styles.textButton}>{categories[1].name}</p>
+      <NavLink exact to={`/products/${gifts[0].category}`} className={styles.firstLink}>
+        <Grid item sm={12} className={styles.Box}>
+          <img src={gifts[0].categoryImg} alt={gifts[0].category} className={styles.imageButton}/>
+          <p className={styles.textButton}>{gifts[0].categoryName}</p>
         </Grid>
       </NavLink>
-      <NavLink exact to={`/products/${categories[2].id}`} className={styles.link}>
-        <Grid item xs={12} sm={12} className={styles.Box}>
-          <img src={categories[2].image} alt={categories[2].id} className={styles.imageButton}/>
-          <p className={styles.textButton}>{categories[2].name}</p>
+      <NavLink exact to={`/products/${gifts[3].category}`} className={styles.link}>
+        <Grid item sm={12} className={styles.Box}>
+          <img src={gifts[3].categoryImg} alt={gifts[3].category} className={styles.imageButton}/>
+          <p className={styles.textButton}>{gifts[3].categoryName}</p>
         </Grid>
       </NavLink>
-      <NavLink exact to={`/products/${categories[0].id}`} className={styles.link}>
-        <Grid item xs={12} sm={12} className={styles.Box}>
-          <img src={categories[0].image} alt={categories[0].id} className={styles.imageButton}/>
-          <p className={styles.textButton}>{categories[0].name}</p>
+      <NavLink exact to={`/products/${gifts[7].category}`} className={styles.link}>
+        <Grid item sm={12} className={styles.Box}>
+          <img src={gifts[7].categoryImg} alt={gifts[7].category} className={styles.imageButton}/>
+          <p className={styles.textButton}>{gifts[7].categoryName}</p>
         </Grid>
       </NavLink>
     </Grid>
@@ -38,7 +38,7 @@ const Component = ({className, categories}) => (
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  categories: PropTypes.array,
+  gifts: PropTypes.array,
 };
 
 //const mapStateToProps = state => ({

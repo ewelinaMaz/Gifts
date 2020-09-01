@@ -17,3 +17,11 @@
 .menuButton {
   margin-right: 1rem;
 }
+@media (max-width: 768px) {
+  .brand {
+    font-size: 15px;
+  }  
+  .login {
+    display: none;
+  }
+}

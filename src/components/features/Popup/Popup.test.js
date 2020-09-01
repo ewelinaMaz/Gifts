@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { NumberInputComponent } from './NumberInput';
+import { PopupComponent } from './Popup';
 
-describe('Component NumberInput', () => {
+describe('Component Popup', () => {
   it('should render without crashing', () => {
-    const component = shallow(<NumberInputComponent />);
+    const component = shallow(<PopupComponent />);
     expect(component).toBeTruthy();
   });
 });

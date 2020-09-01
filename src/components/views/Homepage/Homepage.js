@@ -9,53 +9,66 @@ import Divider from '@material-ui/core/Divider';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 import { connect } from 'react-redux';
-import { getCategories } from '../../../redux/categoriesRedux';
-
+import { getAll } from '../../../redux/giftsRedux';
+import { fetchPublished } from '../../../redux/giftsRedux';
 import styles from './Homepage.module.scss';
 import { Grid } from '@material-ui/core';
 
-const Component = ({className, categories, children}) => (
-  <Container className={clsx(className, styles.root)}>
-    <Divider variant="middle" className={styles.divider} />
-    <Grid
-      container 
-      direction="row"
-      justify="space-evenly"
-      alignItems="center">
-      <Grid item xs={12} sm={6}>
-        <img className={styles.leftImage} src={image} alt="gift"/>
-      </Grid>
-      <Grid item xs={12} sm={6}
-        className={styles.TextBox}>
-        <img className={styles.image} src={image2} alt="sweets"/>  
-        <h2 className={styles.Maintext}>Unique gifts came from passion and love  <FavoriteBorderIcon className={styles.heart}/></h2>
-        <h3 className={styles.Subtext}>Choose yours </h3>
-      </Grid> 
-    </Grid>
+class Component extends React.Component {
+  static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
+    gifts: PropTypes.array,
+    loadProduct: PropTypes.func,
+  };
 
-    <Divider variant="middle" className={styles.divider} />
-    <HomeButtons categories={categories}/>
-    <Divider variant="middle" className={styles.divider} />
+  componentDidMount() {
+    this.props.loadProduct();
+  }
+  render() {
+    const { className, gifts } = this.props;
+    return (
+      <Container className={clsx(className, styles.root)}>
+        <Divider variant="middle" className={styles.divider} />
+        <Grid
+          container
+          direction="row"
+          justify="space-evenly"
+          alignItems="center"
+        >
+          <Grid item xs={12} sm={6}>
+            <img className={styles.leftImage} src={image} alt="gift" />
+          </Grid>
+          <Grid item xs={12} sm={6} className={styles.TextBox}>
+            <img className={styles.image} src={image2} alt="sweets" />
+            <h2 className={styles.Maintext}>
+              Unique gifts came from passion and love
+              <FavoriteBorderIcon className={styles.heart} />
+            </h2>
+            <h3 className={styles.Subtext}>Choose yours </h3>
+          </Grid>
+        </Grid>
 
-  </Container>
+        <Divider variant="middle" className={styles.divider} />
+        <HomeButtons gifts={gifts} />
+        <Divider variant="middle" className={styles.divider} />
+      </Container>
+    );
+  }
+}
 
-);
-
-Component.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  categories: PropTypes.array,
-};
-
-const mapStateToProps = state => ({
-  categories: getCategories(state),
+const mapStateToProps = (state) => ({
+  gifts: getAll(state),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = (dispatch) => ({
+  loadProduct: () => dispatch(fetchPublished()),
+});
 
-const ContainerComponent = connect(mapStateToProps)(Component);
+const ContainerComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Component);
 
 export {
   //Component as Homepage,

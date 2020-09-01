@@ -1,6 +1,6 @@
-import { composeWithDevTools } from 'redux-devtools-extension';
 import {combineReducers, createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 import { initialState } from './initialState';
 import { reducer as giftsReducer } from './giftsRedux';
 import { reducer as optionReducer } from './optionRedux';

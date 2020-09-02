@@ -1,5 +1,8 @@
 project side: https://sleepy-forest-92591.herokuapp.com/
-last commit for 2.09.2020 ( to do - testing ): 
+
+last commit for 2.09.2020 ( to do - testing ): https://github.com/ewelinaMaz/Gifts/commit/a93dfccba657db11651cda98d0193a4a78ff5ae6
+
+To install project use command: yarn install && yarn start &&  npx nodemon backend/server.js  
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

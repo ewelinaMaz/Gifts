@@ -5,15 +5,15 @@ export const API_URL = (process.env.NODE_ENV === 'production') ? '/api' : 'http:
 /* selectors */
 export const getAll = ({gifts}) => gifts.data;
 
+export const getLoadingState = ({ gifts }) => gifts.loading;
+
 export const getGiftsByCategory = ({ gifts }, id ) => {
   const categoryGifts = gifts.data.filter(gift => gift.category === id);
-  console.log(categoryGifts);
   return categoryGifts;
 };
 
 export const getGiftByOption = ({gifts}, id) => {
   const gift = gifts.data.filter(gift => gift.option === id);
-  console.log(gift);
   return gift.length ? gift[0] : { error: true };
 };
 

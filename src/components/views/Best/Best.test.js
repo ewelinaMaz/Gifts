@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SplashComponent } from './Splash';
+import { BestComponent } from './Best';
 
-describe('Component Splash', () => {
+describe('Component Best', () => {
   it('should render without crashing', () => {
-    const component = shallow(<SplashComponent />);
+    const component = shallow(<BestComponent />);
     expect(component).toBeTruthy();
   });
 });

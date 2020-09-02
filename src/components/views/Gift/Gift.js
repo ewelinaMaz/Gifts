@@ -10,54 +10,66 @@ import FormLabel from '@material-ui/core/FormLabel';
 import clsx from 'clsx';
 import { NumberInput } from '../../common/NumberInput/NumberInput';
 import { Select } from '../../features/Select/Select';
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
 import { connect } from 'react-redux';
 import { getGiftByOption, fetchPublished } from '../../../redux/giftsRedux';
-import { getOptionsByProducts, loadOptionsRequest } from '../../../redux/optionRedux';
+import {
+  getOptionsByProducts,
+  loadOptionsRequest,
+} from '../../../redux/optionRedux';
 import { addToCart } from '../../../redux/cartRedux';
 import styles from './Gift.module.scss';
 
-class Component extends React.Component  { 
+class Component extends React.Component {
+  state = {
+    value: '',
+    amount: 1,
+    rate: this.props.gift.rate,
+  };
 
-state= {
-  value: '',
-  amount: 1,
-}
- static propTypes = {
-   className: PropTypes.string,
-   gift: PropTypes.object,
-   options: PropTypes.array,
-   match: PropTypes.shape({
-     params: PropTypes.shape({
-       id: PropTypes.string,
-     }),
-   }),
-   addGift: PropTypes.func,
-   addToCart: PropTypes.func,
-   loadProducts: PropTypes.func,
-   loadOptionsRequest: PropTypes.func,
- };
+  static propTypes = {
+    className: PropTypes.string,
+    gift: PropTypes.object,
+    options: PropTypes.array,
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        id: PropTypes.string,
+      }),
+    }),
+    addGift: PropTypes.func,
+    addToCart: PropTypes.func,
+    loadProducts: PropTypes.func,
+    loadOptionsRequest: PropTypes.func,
+  };
 
- componentDidMount() {
-   this.props.loadProducts();
-   this.props.loadOptionsRequest();
- }
+  componentDidMount() {
+    this.props.loadProducts();
+    this.props.loadOptionsRequest();
+  }
 
   handleChange = (event) => {
-    this.setState({value: event.target.value});
+    this.setState({ value: event.target.value });
+  };
+
+  handleRate = (event) => {
+    this.setState({ rate: event.target.value });
   };
 
   updateTextField = (event) => {
-    this.setState({amount: parseInt(event.target.value)});
+    this.setState({ amount: parseInt(event.target.value) });
   };
 
-  addGiftToCart = (amount, value) => this.props.addGift({
-    gift: this.props.gift,
-    amount: amount,
-    value: value });
+  addGiftToCart = (amount, value) =>
+    this.props.addGift({
+      gift: this.props.gift,
+      amount: amount,
+      value: value,
+    });
 
   render() {
-    const { gift, options, className} = this.props;
-    const { amount, value } = this.state;
+    const { gift, options, className } = this.props;
+    const { amount, value, rate } = this.state;
 
     return (
       <Container className={clsx(className, styles.root)}>
@@ -65,45 +77,62 @@ state= {
           container
           direction="row"
           justify="space-evenly"
-          alignItems="center">
+          alignItems="center"
+        >
           <Grid item xs={12} sm={6}>
             <Typography component="p">Price {gift.price}$</Typography>
             <Typography component="h1">{gift.option}</Typography>
             <Typography component="p"> {gift.description}</Typography>
-            <FormControl component="fieldset"
-              className={styles.select}>
+            <Box
+              component="fieldset"
+              mb={3}
+              borderColor="transparent"
+              className={styles.rate}
+            >
+              <Typography component="legend">Client rate</Typography>
+              <Rating
+                name="Product rate"
+                value={rate}
+                onChange={this.handleRate}
+              />
+            </Box>
+            <FormControl component="fieldset" className={styles.select}>
               <FormLabel component="legend">{gift.productSelect}</FormLabel>
-              <RadioGroup aria-label={gift.productSelect} 
+              <RadioGroup
+                aria-label={gift.productSelect}
                 name="select"
-                value={value} 
-                onChange={this.handleChange}>
-                {options.map( option => (
-                  <FormControlLabel 
-                    key={option.option} 
-                    value={option.option} 
-                    control=
-                      {<Radio 
+                value={value}
+                onChange={this.handleChange}
+              >
+                {options.map((option) => (
+                  <FormControlLabel
+                    key={option.option}
+                    value={option.option}
+                    control={
+                      <Radio
                         className={styles.radio}
-                        style= {{color: '#584332'}} />} 
-                    label={option.option} />
+                        style={{ color: '#584332' }}
+                      />
+                    }
+                    label={option.option}
+                  />
                 ))}
               </RadioGroup>
             </FormControl>
-            <span>Ilość:&nbsp;
-              <NumberInput
-                value={amount}
-                onChange={this.updateTextField}
-              />
+            <span>
+              Quantity:&nbsp;
+              <NumberInput value={amount} onChange={this.updateTextField} />
             </span>
-            <Button 
+            <Button
               className={styles.button}
               variant="contained"
-              onClick={() => this.addGiftToCart( amount, value )}>
-                Add to Card
+              onClick={() => this.addGiftToCart(amount, value)}
+            >
+              Add to Card
             </Button>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Select options={options}/>
+            <Select options={options} />
           </Grid>
         </Grid>
       </Container>
@@ -111,23 +140,24 @@ state= {
   }
 }
 
-
-
 const mapStateToProps = (state, props) => ({
-  gift: getGiftByOption(state,  props.match.params.id),
+  gift: getGiftByOption(state, props.match.params.id),
   options: getOptionsByProducts(state, props.match.params.id),
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   addGift: (arg) => dispatch(addToCart(arg)),
   loadProducts: () => dispatch(fetchPublished()),
   loadOptionsRequest: () => dispatch(loadOptionsRequest()),
 });
 
-const ContainerComponent = connect(mapStateToProps, mapDispatchToProps)(Component);
+const ContainerComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Component);
 
 export {
-//  Component as Gift,
+  //  Component as Gift,
   ContainerComponent as Gift,
   Component as GiftComponent,
 };

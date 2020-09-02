@@ -1,3 +1,6 @@
+project side: https://sleepy-forest-92591.herokuapp.com/
+last commit for 2.09.2020 ( to do - testing ): 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

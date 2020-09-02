@@ -10,10 +10,9 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 import { connect } from 'react-redux';
 import { getAll } from '../../../redux/giftsRedux';
-import { fetchPublished, getLoadingState } from '../../../redux/giftsRedux';
+import { fetchPublished } from '../../../redux/giftsRedux';
 import styles from './Homepage.module.scss';
 import { Grid } from '@material-ui/core';
-import { Splash } from '../Splash/Splash';
 
 class Component extends React.Component {
   static propTypes = {
@@ -21,49 +20,45 @@ class Component extends React.Component {
     className: PropTypes.string,
     gifts: PropTypes.array,
     loadProduct: PropTypes.func,
-    loading: PropTypes.object,
   };
 
   componentDidMount() {
     this.props.loadProduct();
   }
   render() {
-    const { className, gifts, loading } = this.props;
+    const { className, gifts } = this.props;
     return (
-      loading.active ? <Splash /> : (
-        <Container className={clsx(className, styles.root)}>
-          <Divider variant="middle" className={styles.divider} />
-          <Grid
-            container
-            direction="row"
-            justify="space-evenly"
-            alignItems="center"
-          >
-            <Grid item xs={12} sm={6}>
-              <img className={styles.leftImage} src={image} alt="gift" />
-            </Grid>
-            <Grid item xs={12} sm={6} className={styles.TextBox}>
-              <img className={styles.image} src={image2} alt="sweets" />
-              <h2 className={styles.Maintext}>
-              Unique gifts came from passion and love
-                <FavoriteBorderIcon className={styles.heart} />
-              </h2>
-              <h3 className={styles.Subtext}>Choose yours </h3>
-            </Grid>
+      <Container className={clsx(className, styles.root)}>
+        <Divider variant="middle" className={styles.divider} />
+        <Grid
+          container
+          direction="row"
+          justify="space-evenly"
+          alignItems="center"
+        >
+          <Grid item xs={12} sm={6}>
+            <img className={styles.leftImage} src={image} alt="gift" />
           </Grid>
+          <Grid item xs={12} sm={6} className={styles.TextBox}>
+            <img className={styles.image} src={image2} alt="sweets" />
+            <h2 className={styles.Maintext}>
+              Unique gifts came from passion and love
+              <FavoriteBorderIcon className={styles.heart} />
+            </h2>
+            <h3 className={styles.Subtext}>Choose yours </h3>
+          </Grid>
+        </Grid>
 
-          <Divider variant="middle" className={styles.divider} />
-          <HomeButtons gifts={gifts} />
-          <Divider variant="middle" className={styles.divider} />
-        </Container>
-      )
+        <Divider variant="middle" className={styles.divider} />
+        <HomeButtons gifts={gifts} />
+        <Divider variant="middle" className={styles.divider} />
+      </Container>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
   gifts: getAll(state),
-  loading: getLoadingState(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

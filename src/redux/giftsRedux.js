@@ -5,8 +5,6 @@ export const API_URL = (process.env.NODE_ENV === 'production') ? '/api' : 'http:
 /* selectors */
 export const getAll = ({gifts}) => gifts.data;
 
-export const getLoadingState = ({ gifts }) => gifts.loading;
-
 export const getGiftsByCategory = ({ gifts }, id ) => {
   const categoryGifts = gifts.data.filter(gift => gift.category === id);
   return categoryGifts;
@@ -18,6 +16,11 @@ export const getGiftByOption = ({gifts}, id) => {
 };
 
 export const getGiftsById = ({ gifts }) => gifts.opened;
+
+export const getGiftsByRate = ({ gifts }) => {
+  const bestGift = gifts.data.filter(gift => gift.rate > 4);
+  return bestGift;
+};
 
 /* action name creator */
 const reducerName = 'gifts';

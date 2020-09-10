@@ -2,9 +2,9 @@ const Gift = require('../models/gift.model');
 
 exports.getAll = async (req, res) => {
   try {
-    const result = await Gift.find();
-    if(!result) res.status(404).json({ gift: 'Not found' });
-    else res.json(result);
+    const gifts = await Gift.find();
+    if(!gifts) res.status(404).json({ gift: 'Not found' });
+    else res.json(gifts);
   }
   catch(err) {
     res.status(500).json(err);
@@ -13,10 +13,10 @@ exports.getAll = async (req, res) => {
 
 exports.getById = async (req, res) => {
   try {
-    const result = await Gift
-      .find({ option: req.params.id});
-    if(!result) res.status(404).json({ gift: 'Not found' });
-    else res.json(result);
+    const gifts = await Gift
+      .find({ id: req.params.id});
+    if(!gifts) res.status(404).json({ gift: 'Not found' });
+    else res.json(gifts);
   }
   catch(err) {
     res.status(500).json(err);

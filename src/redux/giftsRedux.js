@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = 'http://localhost:8000/api';
+import {API_URL} from '../config';
 
 /* selectors */
 export const getAll = ({gifts}) => gifts.data;

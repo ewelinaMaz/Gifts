@@ -40,15 +40,11 @@ export const fetchGifttById = payload => ({ payload, type: FETCH_GIFTS_BY_ID });
 
 /* thunk creators */
 export const fetchPublished = () => {
-  return (dispatch, getState) => {
+  return async dispatch => {
+    dispatch(fetchStarted());
     try {
-      const { gifts } = getState();
-      if (!gifts.data.length || gifts.loading.active === false) {
-        dispatch(fetchStarted());
-        axios.get(`${API_URL}/gifts`).then((res) => {
-          dispatch(fetchSuccess(res.data));
-        });
-      }
+      let res = await axios.get(`${API_URL}/gifts`);
+      dispatch(fetchSuccess(res.data));
     } catch (err) {
       dispatch(fetchError(err.message || true));
     }

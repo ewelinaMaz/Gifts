@@ -26,15 +26,11 @@ export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 
 /* thunk creators */
 export const loadOptionsRequest = () => {
-  return (dispatch, getState) => {
+  return async dispatch => {
+    dispatch(fetchStarted());
     try {
-      const { options } = getState();
-      if (!options.data.length || options.loading.active === false) {
-        dispatch(fetchStarted());
-        axios.get(`${API_URL}/option`).then((res) => {
-          dispatch(fetchSuccess(res.data));
-        });
-      }
+      let res = await axios.get(`${API_URL}/option`);
+      dispatch(fetchSuccess(res.data));
     } catch (err) {
       dispatch(fetchError(err.message || true));
     }

@@ -7,7 +7,6 @@ import image from '../../images/candy.jpg';
 import image2 from '../../images/candy-4.jpg';
 import Divider from '@material-ui/core/Divider';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-
 import { connect } from 'react-redux';
 import { getAll } from '../../../redux/giftsRedux';
 import { fetchPublished } from '../../../redux/giftsRedux';
@@ -15,15 +14,9 @@ import styles from './Homepage.module.scss';
 import { Grid } from '@material-ui/core';
 
 class Component extends React.Component {
-  static propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-    gifts: PropTypes.array,
-    loadProduct: PropTypes.func,
-  };
-
   componentDidMount() {
-    this.props.loadProduct();
+    const { loadProduct } = this.props;
+    loadProduct();
   }
   render() {
     const { className, gifts } = this.props;
@@ -56,6 +49,11 @@ class Component extends React.Component {
     );
   }
 }
+Component.propTypes = {
+  gifts: PropTypes.array,
+  className: PropTypes.string,
+  loadProduct: PropTypes.func,
+};
 
 const mapStateToProps = (state) => ({
   gifts: getAll(state),

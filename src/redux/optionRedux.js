@@ -1,5 +1,6 @@
 import axios from 'axios';
-export const API_URL = (process.env.NODE_ENV === 'production') ? '/api' : 'http://localhost:8000/api';
+import {API_URL} from '../config';
+
 /* selectors */
 export const getOptions = ({options}) => options.data;
 

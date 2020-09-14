@@ -19,13 +19,11 @@ class Component extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     categoryGifts: PropTypes.array,
-    category: PropTypes.array,
     match: PropTypes.shape({
       params: PropTypes.shape({
         id: PropTypes.string,
       }),
     }),
-    getCategory: PropTypes.func,
     loadProduct:PropTypes.func,
   }
 

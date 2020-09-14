@@ -1,7 +1,7 @@
 export const initialState = {
 
   options: {
-    data: [
+    data: [/*
       { id: 'Jar with macaron',
         option: 'chocolate-cherry flavour',
         image: 'https://cdn.pixabay.com/photo/2018/01/16/19/00/macaron-3086577_1280.jpg' },
@@ -91,7 +91,7 @@ export const initialState = {
         image: 'https://cdn.pixabay.com/photo/2018/01/16/19/05/flower-3086596_1280.jpg' },
       { id: 'Body scrub',
         option: 'coffee',
-        image: 'https://cdn.pixabay.com/photo/2018/11/15/02/41/essential-oil-3816410_1280.jpg' },
+        image: 'https://cdn.pixabay.com/photo/2018/11/15/02/41/essential-oil-3816410_1280.jpg' },*/
     ],
     loading: {
       active: false,
@@ -99,7 +99,7 @@ export const initialState = {
     },
   },
   gifts: {
-    data: [
+    data: [/*
       {
         _id: '1',
         name: 'candies jar',
@@ -209,7 +209,7 @@ export const initialState = {
         rate: 4,
         category: 'body',
         productSelect: 'Select fragrance',
-      },
+      },*/
     ],
     loading: {
       active: false,

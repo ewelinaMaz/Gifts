@@ -40,6 +40,7 @@ class Component extends React.Component {
     addGift: PropTypes.func,
     addToCart: PropTypes.func,
     loadProducts: PropTypes.func,
+
     loadOptionsRequest: PropTypes.func,
   };
 
@@ -72,6 +73,7 @@ class Component extends React.Component {
     const { amount, value, rate } = this.state;
 
     return (
+      
       <Container className={clsx(className, styles.root)}>
         <Grid
           container
@@ -83,19 +85,20 @@ class Component extends React.Component {
             <Typography component="p">Price {gift.price}$</Typography>
             <Typography component="h1">{gift.option}</Typography>
             <Typography component="p"> {gift.description}</Typography>
-            <Box
-              component="fieldset"
-              mb={3}
-              borderColor="transparent"
-              className={styles.rate}
-            >
-              <Typography component="legend">Client rate</Typography>
-              <Rating
-                name="Product rate"
-                value={rate}
-                onChange={this.handleRate}
-              />
-            </Box>
+            {gift.rate ?
+              (<Box
+                component="fieldset"
+                mb={3}
+                borderColor="transparent"
+                className={styles.rate}
+              >
+                <Typography component="legend">Client rate</Typography>
+                <Rating
+                  name="Product rate"
+                  value={rate}
+                  onChange={this.handleRate}
+                />
+              </Box>) : null}
             <FormControl component="fieldset" className={styles.select}>
               <FormLabel component="legend">{gift.productSelect}</FormLabel>
               <RadioGroup
@@ -132,7 +135,8 @@ class Component extends React.Component {
             </Button>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Select options={options} />
+            {options.length ? 
+              (<Select options={options} />) : null}
           </Grid>
         </Grid>
       </Container>

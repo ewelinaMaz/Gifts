@@ -7,10 +7,10 @@
   "image": "https://i.postimg.cc/fTvpdGnf/macaron-jar.jpg",
   "description": "Macarons are a butter-creamed filled cookie sandwich that  transport you to a cobbled street in Paris with one taste. They are magical, dainty, chic, stylish and delicious in equal measure.",
   "price": 25,
-  "rate": 4,
+  "rate": 5,
   "category": "mood",
   "categoryName": "Good for mood",
-  "categoryImg":"https://cdn.pixabay.com/photo/2015/07/27/20/16/book-863418_1280.jpg",
+  "categoryImg": "https://i.postimg.cc/pTW1C9zX/for-mood2.jpg",
   "productSelect": "Select favourite flavour"
 },{
   "_id": {
@@ -21,7 +21,7 @@
   "image": "https://i.postimg.cc/T1fQYPwM/caramels-jar.jpg",
   "description": "SOFT, CREAMY, BUTTERY TEXTURE – Individually wrapped high quality caramel means a soft bite that doesn’t stick to your teeth.",
   "price": 25,
-  "rate": 4,
+  "rate": 5,
   "category": "mood",
   "productSelect": "Select favourite flavour"
 },{
@@ -33,7 +33,7 @@
   "image": "https://i.postimg.cc/K8k7bTN3/chocolates-jar.jpg",
   "description": "The dark mouth melting chocolate with crackling hazelnuts under your teeth. leaves you with a irresistible taste of heaven smells sweeter then honey , tempting you to eat more and more!",
   "price": 25,
-  "rate": 4,
+  "rate": 5,
   "category": "mood",
   "productSelect": "Select favourite flavour"
 },{

@@ -31,12 +31,18 @@ const FETCH_START = createActionName('FETCH_START');
 const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
 const FETCH_GIFTS_BY_ID = createActionName('FETCH_GIFTS_BY_ID');
+const CHANGE_RATING = createActionName('CHANGE_RATING');
 
 /* action creators */
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 export const fetchGifttById = payload => ({ payload, type: FETCH_GIFTS_BY_ID });
+export const updateRating = (payload, stars) => ({
+  payload,
+  stars,
+  type: CHANGE_RATING,
+});
 
 /* thunk creators */
 export const fetchPublished = () => {
@@ -103,6 +109,19 @@ export const reducer = (statePart = [], action = {}) => {
           error: action.payload,
         },
       };
+    }
+    case CHANGE_RATING: {
+      return statePart.map(gift => {
+        if (gift.id === action.payload) {
+          return {
+            ...gift,
+            rated: true,
+            stars: action.stars,
+          };
+        } else {
+          return gift;
+        }
+      });
     }
     default:
       return statePart;

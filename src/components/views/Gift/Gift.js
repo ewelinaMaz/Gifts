@@ -40,7 +40,6 @@ class Component extends React.Component {
     addGift: PropTypes.func,
     addToCart: PropTypes.func,
     loadProducts: PropTypes.func,
-
     loadOptionsRequest: PropTypes.func,
   };
 
@@ -54,7 +53,7 @@ class Component extends React.Component {
   };
 
   handleRate = (event) => {
-    this.setState({ rate: event.target.value });
+    this.setState({ rate: event.target.value || this.props.gift.rate});
   };
 
   updateTextField = (event) => {
@@ -85,7 +84,7 @@ class Component extends React.Component {
             <Typography component="p">Price {gift.price}$</Typography>
             <Typography component="h1">{gift.option}</Typography>
             <Typography component="p"> {gift.description}</Typography>
-            {gift.rate ?
+            {gift ?
               (<Box
                 component="fieldset"
                 mb={3}

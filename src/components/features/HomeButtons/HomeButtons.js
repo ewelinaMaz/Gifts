@@ -42,7 +42,9 @@ class Component extends React.Component {
               </Grid>
             </NavLink>
           </Grid>
-        </div>) : (<NotFound/>)
+        </div>) : (<div>
+        <h1>Loading</h1>
+      </div>)
     );
   }
 }
